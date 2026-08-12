@@ -1,0 +1,23 @@
+# ---- MkDocs ----
+site/
+.cache/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+env/
+.env
+
+# ---- Editors ----
+.vscode/
+.idea/
+*.swp
+*~
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+desktop.ini

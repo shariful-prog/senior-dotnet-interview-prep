@@ -1,0 +1,157 @@
+site_name: Senior .NET Interview Prep
+site_description: Interview notes for C#, .NET, SQL, JavaScript and Architecture — quick-revision Top 20s plus deep-dive answers.
+site_author: Shariful Islam
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: en
+  palette:
+    scheme: default          # light mode only
+    primary: blue
+    accent: blue
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    logo: material/school-outline
+    repo: fontawesome/brands/github
+  favicon: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/templates/assets/images/favicon.png
+  features:
+    - navigation.instant       # SPA-style page loads
+    - navigation.tracking      # URL follows the active anchor
+    - navigation.tabs          # top-level sections as tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top           # back-to-top button
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy        # copy button on code blocks
+    - content.code.annotate
+    - content.tooltips
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  # Use GitHub-compatible heading slugs so the same relative links
+  # (e.g. #a2--boxing--unboxing) work both on GitHub and on the built site.
+  - toc:
+      permalink: true
+      permalink_title: Link to this section
+      # Depth 2 = titles and section headings only. Question headings (###)
+      # stay out of the sidebar so it lists topics, not every question.
+      toc_depth: 2
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  # Resolves :material-xxx: / :octicons-xxx: shortcodes into inline SVG icons.
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search:
+      lang: en
+
+extra_css:
+  - assets/extra.css
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/
+      name: GitHub
+
+# Files present in docs/ that should not be published.
+# Senerios/ is kept in the repo but excluded from the site for now.
+exclude_docs: |
+  venv/
+  .venv/
+  site/
+  README.md
+  Senerios/
+  Top20/index.md
+
+nav:
+  - Home: index.md
+
+  - Top 20:
+      - C#: Top20/csharp-top20-questions.md
+      - .NET / ASP.NET Core: Top20/dotnet-top20-questions.md
+      - SQL: Top20/sql-top20-questions.md
+      - JavaScript: Top20/js-top20-questions.md
+      - Architecture: Top20/architecture-top20-questions.md
+
+  - C#:
+      - Type System: C-Sharp/csharp-type-system.md
+      - OOP & Type Design: C-Sharp/csharp-oop.md
+      - Generics: C-Sharp/csharp-generics.md
+      - Collections: C-Sharp/csharp-collections.md
+      - LINQ & Functional: C-Sharp/csharp-linq.md
+      - Async & Concurrency: C-Sharp/csharp-async.md
+      - Memory & CLR: C-Sharp/csharp-memory.md
+      - Exceptions: C-Sharp/csharp-exceptions.md
+      - Modern C#: C-Sharp/csharp-modern.md
+      - Practices & Testing: C-Sharp/csharp-practices.md
+      - Strings, Dates & Numerics: C-Sharp/csharp-strings-dates.md
+
+  - .NET:
+      - Platform & Ecosystem: Dotnet/dotnet-platform.md
+      - ASP.NET Core Fundamentals: Dotnet/dotnet-aspnetcore-fundamentals.md
+      - Web APIs: Dotnet/dotnet-web-apis.md
+      - MVC & Razor: Dotnet/dotnet-mvc-razor.md
+      - Entity Framework Core: Dotnet/dotnet-ef-core.md
+      - Auth, Errors & Logging: Dotnet/dotnet-auth-logging.md
+      - Performance & Resilience: Dotnet/dotnet-performance-resilience.md
+      - Testing & Operations: Dotnet/dotnet-testing-ops.md
+      - Security: Dotnet/dotnet-security.md
+      - Legacy Framework & EF6: Dotnet/dotnet-legacy-framework-ef.md
+
+  - SQL:
+      - Fundamentals & Joins: Sql/sql-fundamentals-joins.md
+      - Indexing & Query Plans: Sql/sql-indexing-plans.md
+      - Advanced Queries: Sql/sql-advanced-queries.md
+      - Transactions & Locking: Sql/sql-transactions-locking.md
+      - Schema Design: Sql/sql-schema-design.md
+      - NoSQL & Performance: Sql/sql-nosql-performance.md
+      - Query Problems: Sql/sql-query-problems.md
+      - Scenarios: Sql/sql-scenarios.md
+
+  - JavaScript:
+      - JavaScript: JS/js-javascript.md
+      - TypeScript: JS/js-typescript.md
+      - Code Output Practice: JS/js-code-output-questions.md
+      - Angular: JS/ng-angular.md
+      - Angular Cheat Sheet: JS/ng-quick-overview.md
+
+  - Architecture:
+      - SOLID Principles: Architecture/arch-solid.md
+      - Design Patterns: Architecture/arch-design-patterns.md
+      - Clean / Onion / Hexagonal: Architecture/arch-clean-onion.md
+      - Monolith & Microservices: Architecture/arch-monolith-microservices.md

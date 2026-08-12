@@ -1,0 +1,227 @@
+/* ------------------------------------------------------------------
+   Senior .NET Interview Prep — light-mode theme refinements
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Clear medium-dark blue — visible as blue, not harsh, not black */
+  --md-primary-fg-color:        #1565c0;
+  --md-primary-fg-color--light: #1565c0;
+  --md-primary-fg-color--dark:  #1565c0;
+  --md-accent-fg-color:         #1565c0;
+
+  /* Slightly warmer than pure white — easier on the eyes for long reading */
+  --md-default-bg-color:        #fdfdfd;
+
+  /* Neutral dark grey for body headings — not blue, not pure black */
+  --ink:                        #21262d;
+  --rule:                       #e6e8eb;
+
+  --qa-definition-bg:           #f2f6fb;
+  --qa-definition-border:       #1565c0;
+}
+
+/* ---------- Typography ---------- */
+
+.md-typeset {
+  font-size: .78rem;
+  line-height: 1.7;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+.md-typeset h2 {
+  font-weight: 650;
+  letter-spacing: -.005em;
+  margin-top: 2.2em;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  margin-top: 1.8em;
+}
+
+.md-typeset h4 {
+  font-weight: 600;
+  color: #3a424b;
+}
+
+/* ---------- Q&A list styling ----------
+   Numbered lists elsewhere in the notes read better with a little air. */
+
+.md-typeset ol > li {
+  margin-bottom: .6em;
+}
+
+/* ---------- Question blocks ----------
+   Separators come from the `---` already written after each answer in the
+   source files, so no border is added here — that would double the rule.
+   Lead-in labels ("Answer.", "Definition:", "Detail:") stay plain bold. */
+
+/* the deep-dive reference line sits quieter than the answer text */
+.md-typeset p > .twemoji:first-child {
+  vertical-align: -.15em;
+  margin-right: .15rem;
+}
+
+.md-typeset p > .twemoji:first-child svg {
+  height: .95rem;
+  width: .95rem;
+  fill: var(--md-default-fg-color--lighter);
+}
+
+/* ---------- Tables ---------- */
+
+.md-typeset table:not([class]) {
+  font-size: .72rem;
+  border: 1px solid var(--rule);
+  border-radius: .3rem;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: #f4f6f8;
+  color: var(--ink);
+  font-weight: 640;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background-color: #f7f9fb;
+}
+
+/* ---------- Code ---------- */
+
+.md-typeset pre > code {
+  font-size: .70rem;
+  line-height: 1.6;
+  border-radius: .3rem;
+}
+
+.md-typeset code {
+  font-size: .84em;
+  background-color: #eef1f4;
+  padding: .12em .38em;
+  border-radius: .22rem;
+}
+
+/* Inline code inside headings shouldn't get a heavy background */
+.md-typeset h1 code,
+.md-typeset h2 code,
+.md-typeset h3 code,
+.md-typeset h4 code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.highlight span.filename {
+  border-bottom: 1px solid var(--rule);
+  font-weight: 600;
+}
+
+/* ---------- Blockquote (used for the "Goal:" intro lines) ---------- */
+
+.md-typeset blockquote {
+  border-left: .18rem solid var(--qa-definition-border);
+  background-color: var(--qa-definition-bg);
+  padding: .55rem .9rem;
+  border-radius: 0 .25rem .25rem 0;
+  color: #3a424b;
+}
+
+.md-typeset blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Cards on the landing pages ---------- */
+
+.md-typeset .grid.cards > ul > li {
+  border: 1px solid var(--rule);
+  border-radius: .4rem;
+  padding: .9rem 1rem;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 .18rem .7rem rgba(21, 101, 192, .16);
+  transform: translateY(-1px);
+}
+
+/* Card heading icons */
+.md-typeset .grid.cards .twemoji.lg svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--md-primary-fg-color);
+}
+
+/* Landing pages read better with a little more room around the cards */
+.md-typeset .grid.cards {
+  margin-top: 1.4em;
+}
+
+/* ---------- Navigation ---------- */
+
+/* Pin the header and tab bar to the exact brand blue, so Material's
+   built-in palette can't substitute its own shade. */
+.md-header,
+.md-tabs {
+  background-color: #1565c0;
+}
+
+.md-nav {
+  font-size: .70rem;
+}
+
+.md-nav__title {
+  font-weight: 650;
+}
+
+.md-tabs {
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+/* Active nav item gets a clearer marker */
+.md-nav__link--active {
+  font-weight: 640;
+}
+
+/* ---------- Admonitions ---------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: .74rem;
+  border-radius: .3rem;
+  border-width: .05rem;
+  box-shadow: none;
+}
+
+/* ---------- Footer ---------- */
+
+.md-footer-meta {
+  background-color: var(--ink);
+}
+
+/* ---------- Print ---------- */
+
+@media print {
+  .md-typeset ol > li { break-inside: avoid; }
+  .md-typeset pre     { break-inside: avoid; }
+}
+
+/* ---------- No page table of contents ----------
+   The left sidebar lists pages only; the right-hand TOC column is removed
+   so the content gets the full width. */
+
+.md-sidebar--secondary {
+  display: none !important;
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-grid { max-width: 62rem; }
+}
